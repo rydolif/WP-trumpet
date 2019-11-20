@@ -35,7 +35,7 @@
 		        if( get_row_layout() == 'green-col2' ):
 		            $text1 = get_sub_field('text1');
 		            $text2 = get_sub_field('text2');
-		        ?> 
+		        	?> 
 					<section class="page--green">
 						<div class="container">
 							<div class="row justify-content-center">
@@ -182,8 +182,6 @@
 
 		        // Таблица
 		        elseif( get_row_layout() == 'table' ):
-		            $title = get_sub_field('title');
-		            $sub_title = get_sub_field('sub_title');
 		        	?>
 
 					<section class="table">
@@ -191,43 +189,64 @@
 
 							<div class="row justify-content-center">
 								<div class="col-xl-10">
-									<table>
-										<tr>
-											<th colspan="22"><b><?php echo $title; ?></b></th>
-										</tr>
-										<tr>
-											<td rowspan="20"><b><?php echo $sub_title; ?></b></td>
-										</tr>
-										<tr>
-											<td>1</td>
-											<td>2</td>
-											<td>3</td>
-											<td>4</td>
-											<td>5</td>
-											<td>6</td>
-											<td>7</td>
-											<td>8</td>
-											<td>9</td>
-											<td>10</td>
-											<td>11</td>
-											<td>12</td>
-											<td>13</td>
-											<td>14</td>
-											<td>15</td>
-											<td>16</td>
-											<td>17</td>
-											<td>18</td>
-											<td>19</td>
-											<td>20</td>
-											<td>21</td>
-										</tr>
-									</table>
+
+									<?php  
+										$table = get_field( 'table' );
+
+									if ( ! empty ( $table ) ) {
+
+									    echo '<table border="0">';
+
+									        if ( ! empty( $table['caption'] ) ) {
+
+									            echo '<caption>' . $table['caption'] . '</caption>';
+									        }
+
+									        if ( ! empty( $table['header'] ) ) {
+
+									            echo '<thead>';
+
+									                echo '<tr>';
+
+									                    foreach ( $table['header'] as $th ) {
+
+									                        echo '<th>';
+									                            echo $th['c'];
+									                        echo '</th>';
+									                    }
+
+									                echo '</tr>';
+
+									            echo '</thead>';
+									        }
+
+									        echo '<tbody>';
+
+									            foreach ( $table['body'] as $tr ) {
+
+									                echo '<tr>';
+
+									                    foreach ( $tr as $td ) {
+
+									                        echo '<td>';
+									                            echo $td['c'];
+									                        echo '</td>';
+									                    }
+
+									                echo '</tr>';
+									            }
+
+									        echo '</tbody>';
+
+									    echo '</table>';
+									}
+									?>
+									
 								</div>
 							</div>
 
 						</div>
 					</section>
-
 		        <?php  
 
 		        endif;
@@ -237,7 +256,7 @@
 
 		// No value.
 		else :
-		    // Do something...
+		// Do something...
 		endif;
 	?>
 
