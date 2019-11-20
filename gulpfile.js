@@ -47,7 +47,7 @@ gulp.task('js', function() {
 	.pipe(plumber())
 	.pipe(concat('scripts.min.js'))
 	.pipe(uglify()) // Mifify js (opt.)
-	.pipe(gulp.dest('app/js'))
+	.pipe(gulp.dest('local/assets/js'))
 	.pipe(browsersync.reload({ stream: true }))
 });
 

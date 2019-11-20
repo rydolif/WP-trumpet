@@ -622,6 +622,15 @@
 	.footer
 		padding: 30px 0
 
+		.nav__search
+			&:hover,
+			&:focus
+				.nav__search_input
+					width: 140px
+
+			&_input
+				width: 140px
+
 		&__nav
 			flex-direction: column
 			margin-bottom: 15px
@@ -631,7 +640,7 @@
 			margin-bottom: 15px
 
 		ul
-			flex-direction: column
+			margin-left: 0
 
 		li
 			margin-bottom: 10px
@@ -812,6 +821,23 @@
 		&__item
 			width: 48%
 			margin-bottom: 15px
+
+	.footer
+		.nav__search
+			&:hover,
+			&:focus
+				.nav__search_input
+					width: 180px
+
+			&_input
+				width: 180px
+
+			&_btn
+				input
+					background-color: #fff
+
+		ul
+			flex-direction: column
 
 
 @media only screen and (max-width : 576px)
@@ -1029,7 +1055,7 @@
 
 
 	h1, .title
-		font-size: 32px !important
+		font-size: 28px !important
 
 	h2
 		font-size: 26px
@@ -1133,6 +1159,7 @@
 	.last-news p
 		font-size: 14px
 
-
+	.page--denefits__list
+		margin-bottom: 0
 
 

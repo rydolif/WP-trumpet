@@ -1,11 +1,3 @@
-
-<?php
-	/**
-		* Template name: О нас
-	*/
- ?>
-
-
 <?php get_header(); ?>
 
 	<section class="article--hero contacts--hero page--hero">

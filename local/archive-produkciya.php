@@ -1,9 +1,3 @@
-<?php
-	/**
-		* Template name: Продукция
-	*/
- ?>
-
 
 <?php get_header(); ?>
 
@@ -33,14 +27,14 @@
 			<div class="container">
 
 			<ul>
-				<li><a href="#one" class="tabs__link"><?php the_field('tabs1-name'); ?></a></li>
-				<li><a href="#two" class="tabs__link"><?php the_field('tabs2-name'); ?></a></li>
-				<li><a href="#three" class="tabs__link"><?php the_field('tabs3-name'); ?></a></li>
+				<li><a href="#one" class="tabs__link"><?php the_field('tabs1-name', 'option'); ?></a></li>
+				<li><a href="#two" class="tabs__link"><?php the_field('tabs2-name', 'option'); ?></a></li>
+				<li><a href="#three" class="tabs__link"><?php the_field('tabs3-name', 'option'); ?></a></li>
 			</ul>
 
-			<?php if( have_rows('tabs1') ): ?>
+			<?php if( have_rows('tabs1', 'option') ): ?>
 				<div id="one" class="tabs__wrap">
-					<?php while( have_rows('tabs1') ): the_row(); 
+					<?php while( have_rows('tabs1', 'option') ): the_row(); 
 						$img = get_sub_field('img');
 						$text = get_sub_field('text');
 					?>
@@ -59,9 +53,9 @@
 				</div>
 			<?php endif; ?>
 
-			<?php if( have_rows('tabs2') ): ?>
+			<?php if( have_rows('tabs2', 'option') ): ?>
 				<div id="two" class="tabs__wrap">
-					<?php while( have_rows('tabs2') ): the_row(); 
+					<?php while( have_rows('tabs2', 'option') ): the_row(); 
 						$img = get_sub_field('img');
 						$text = get_sub_field('text');
 					?>
@@ -80,9 +74,9 @@
 				</div>
 			<?php endif; ?>
 
-			<?php if( have_rows('tabs3') ): ?>
+			<?php if( have_rows('tabs3', 'option') ): ?>
 				<div id="three" class="tabs__wrap">
-					<?php while( have_rows('tabs3') ): the_row(); 
+					<?php while( have_rows('tabs3', 'option') ): the_row(); 
 						$img = get_sub_field('img');
 						$text = get_sub_field('text');
 					?>
@@ -112,29 +106,33 @@
 				<div class="row justify-content-center">
 					<div class="col-xl-10">
 							
-						<?php if( have_rows('list') ): ?>
-							<div class="product--catalog__wrap">
-								<?php while( have_rows('list') ): the_row(); 
-									$text = get_sub_field('text');
-									$img = get_sub_field('img');
-									$link = get_sub_field('link');
-									?>
+						<?php
+							$args = array(
+							'post_type' => 'produkciya',
+							'posts_per_page' => -1,
+							);
 
-									<a href="<?php echo $link; ?>" class="product--catalog__item">
-										<img src="data:image/gif;base64,R0lGODlhBwACAIAAAP///wAAACH5BAEAAAEALAAAAAAHAAIAAAIDjI9YADs=" 
-											data-src="<?php echo $img; ?>" 
-											data-srcset="<?php echo $img; ?> 1x"
-											class="lazy" 
-											alt="alt">
-										<p>
-											<?php echo $text; ?>
-										</p>
-										<span class="product--catalog__item_arrow"></span>
-									</a>
+							$query = new WP_Query( $args );
 
-								<?php endwhile; ?>
-							</div>
-						<?php endif; ?>
+							while ( $query->have_posts() ): $query->the_post();
+
+							?>
+
+							<a href="<?php the_permalink(); ?>" class="product--catalog__item">
+								<img src="data:image/gif;base64,R0lGODlhBwACAIAAAP///wAAACH5BAEAAAEALAAAAAAHAAIAAAIDjI9YADs=" 
+									data-src="<?php the_post_thumbnail_url(); ?>" 
+									data-srcset="<?php the_post_thumbnail_url(); ?> 1x"
+									class="lazy" 
+									alt="alt">
+								<p>
+									<?php the_title(); ?>
+								</p>
+								<span class="product--catalog__item_arrow"></span>
+							</a>
+
+							<?php
+							endwhile; wp_reset_postdata();
+						?>
 
 
 					</div>

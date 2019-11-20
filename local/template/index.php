@@ -43,14 +43,14 @@
 		<div class="container">
 
 			<ul>
-				<li><a href="#one" class="tabs__link"><?php the_field('tabs1-name'); ?></a></li>
-				<li><a href="#two" class="tabs__link"><?php the_field('tabs2-name'); ?></a></li>
-				<li><a href="#three" class="tabs__link"><?php the_field('tabs3-name'); ?></a></li>
+				<li><a href="#one" class="tabs__link"><?php the_field('tabs1-name', 'option'); ?></a></li>
+				<li><a href="#two" class="tabs__link"><?php the_field('tabs2-name', 'option'); ?></a></li>
+				<li><a href="#three" class="tabs__link"><?php the_field('tabs3-name', 'option'); ?></a></li>
 			</ul>
 
-			<?php if( have_rows('tabs1') ): ?>
+			<?php if( have_rows('tabs1', 'option') ): ?>
 				<div id="one" class="tabs__wrap">
-					<?php while( have_rows('tabs1') ): the_row(); 
+					<?php while( have_rows('tabs1', 'option') ): the_row(); 
 						$img = get_sub_field('img');
 						$text = get_sub_field('text');
 					?>
@@ -69,9 +69,9 @@
 				</div>
 			<?php endif; ?>
 
-			<?php if( have_rows('tabs2') ): ?>
+			<?php if( have_rows('tabs2', 'option') ): ?>
 				<div id="two" class="tabs__wrap">
-					<?php while( have_rows('tabs2') ): the_row(); 
+					<?php while( have_rows('tabs2', 'option') ): the_row(); 
 						$img = get_sub_field('img');
 						$text = get_sub_field('text');
 					?>
@@ -90,9 +90,9 @@
 				</div>
 			<?php endif; ?>
 
-			<?php if( have_rows('tabs3') ): ?>
+			<?php if( have_rows('tabs3', 'option') ): ?>
 				<div id="three" class="tabs__wrap">
-					<?php while( have_rows('tabs3') ): the_row(); 
+					<?php while( have_rows('tabs3', 'option') ): the_row(); 
 						$img = get_sub_field('img');
 						$text = get_sub_field('text');
 					?>
@@ -110,7 +110,6 @@
 					<?php endwhile; ?>
 				</div>
 			<?php endif; ?>
-
 		</div>
 	</section>
 
@@ -330,31 +329,7 @@
 		</div>
 	</section>
 
-	<section class="section-catalog section-order" data-bg="<?php echo get_template_directory_uri(); ?>/assets/img/tabs--bg.jpg">
-		<div class="container">
-			
-			<form class="section-order__form section-catalog__form form">
-				<div class="section-order__block">
-					<h3>Форма на запрос каталога</h3>
-					<div class="section-order__input">
-						<input type="text" name="name" placeholder="Ваше имя" required>
-					</div>
-					<div class="section-order__input">
-						<input type="email" name="mail" placeholder="Ваша почта" required>
-					</div>
-					<div class="section-order__input">
-						<button class="btn btn--accent">Отправить форму</button>
-					</div>
-					<div class="section-order__input">
-						<input type="checkbox" id="ok2">
-						<label for="ok2">Выражаю свое согласие<br> на обработку персональных<br> данных.</label>
-					</div>
-				</div>
-				<img class="section-catalog__img lazy" src="data:image/gif;base64,R0lGODlhBwACAIAAAP///wAAACH5BAEAAAEALAAAAAAHAAIAAAIDjI9YADs=" data-src="<?php echo get_template_directory_uri(); ?>/assets/img/section-catalog--img.jpg" data-srcset="<?php echo get_template_directory_uri(); ?>/assets/img/section-catalog--img.jpg 1x" alt="alt">
-			</form>
-
-		</div>
-	</section>
+	<?php get_template_part( 'parts/form-catalog' ); ?>
 
 	<section class="last-news">
 		<div class="container">

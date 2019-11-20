@@ -1,4 +1,4 @@
-	<section class="page--white">
+	<section class="page--white delivery">
 		<div class="container">
 
 			<h2>Доставка и оплата</h2>

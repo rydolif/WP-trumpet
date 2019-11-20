@@ -36,5 +36,8 @@
 		</div>
 	</section>
 
+	<div class="container">
+		<?php wptuts_pagination(); ?> 
+	</div>
 
 <?php get_footer(); ?>

@@ -1,8 +1,6 @@
 @import "libs"
 @import "base"
 
-
-
 .fixed
 	position: fixed
 	top: 50%
@@ -606,6 +604,9 @@
 				right: 70px
 			border-radius: 10px
 			overflow: hidden
+
+		label::before
+			border-color: $accent
 
 		&__block
 			display: flex
@@ -1390,10 +1391,26 @@
 			&:last-child
 				margin-bottom: 0
 
-
 	&--white
 		background-color: #fff
 		color: $text
+
+		li
+			position: relative
+			z-index: 1
+			text-align: left
+			margin-bottom: 30px
+			
+			&::before
+				@include pseudo
+				top: 0
+				transform: translate(-50%, -5px)
+				width: 40px
+				height: 40px
+				border-radius: 50%
+				border: 5px solid $accent
+				box-shadow: 0 0 20px rgba($accent, 1)
+				z-index: -1
 
 	&--info
 		background-color: $text
@@ -1404,6 +1421,7 @@
 
 		img
 			border-radius: 50%
+			transition: all .6s
 			
 		span
 			display: block
@@ -1419,7 +1437,17 @@
 
 		&__item
 			width: 18%
+			display: block
 			text-align: center
+			color: #fff
+
+			&:hover,
+			&:focus
+				text-decoration: underline
+				color: #fff
+
+				img
+					transform: scale(.9)
 
 	&--green
 		background-color: $green
@@ -1433,22 +1461,6 @@
 	&--text
 		background-color: $text
 
-	&__decor
-		position: relative
-		z-index: 1
-		text-align: left
-		
-		&::before
-			@include pseudo
-			top: 0
-			transform: translate(-50%, -5px)
-			width: 40px
-			height: 40px
-			border-radius: 50%
-			border: 5px solid $accent
-			box-shadow: 0 0 20px rgba($accent, 1)
-			z-index: -1
-
 	&__list
 
 		li
@@ -1456,8 +1468,12 @@
 			align-items: center
 			margin-bottom: 40px
 
+			&::before
+				display: none !important
+				
 			&:last-child
 				margin-bottom: 0
+
 
 		img
 			margin-right: 50px
@@ -1705,6 +1721,35 @@
 
 iframe
 	max-width: 100%
+
+.pagination
+	display: flex
+	justify-content: center
+	padding: 30px 0
+
+	span, a
+		display: block
+		width: 30px
+		height: 30px
+		margin: 0 5px
+		border-radius: 50%
+		border: 1px solid $green
+		font-size: 15px
+		line-height: 30px
+		text-align: center
+		font-weight: 500
+		transition: all .6s
+
+	span
+		background-color: $green
+		color: #fff
+
+	a
+		&:hover,
+		&:focus
+			background-color: $border
+			box-shadow: 0 0 8px 0 rgba($green, 1)
+
 
 
 //--------------------------wp-----------------------------
