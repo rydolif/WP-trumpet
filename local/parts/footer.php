@@ -2,13 +2,13 @@
 	<footer class="footer">
 		<div class="footer__nav container">
 
-			<a href="#" class="footer__logo">
+			<a href="<?php echo get_home_url(); ?>" class="footer__logo">
 				<img class="lazy"src="data:image/gif;base64,R0lGODlhBwACAIAAAP///wAAACH5BAEAAAEALAAAAAAHAAIAAAIDjI9YADs=" data-src="<?php echo get_template_directory_uri(); ?>/assets/img/footer--logo.png" data-srcset="<?php echo get_template_directory_uri(); ?>/assets/img/footer--logo.png 1x" alt="alt">
 			</a>
 
 			<?php 
 				wp_nav_menu( array(
-					'menu'=>'menu',
+					'menu'=>'footer-menu',
 				    'theme_location'=>'menu',
 				) );
 			?>

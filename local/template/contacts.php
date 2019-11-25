@@ -119,7 +119,7 @@
 	<section class="contacts--call" data-bg="<?php echo get_template_directory_uri(); ?>/assets/img/contacts--form.jpg">
 		<div class="container">
 
-			<form class="contacts--call__form form">
+			<div class="contacts--call__form form">
 				<h3>Заказ обратного звонка</h3>
 				<p>
 					Если Вам неудобно звонить нам, оставьте
@@ -127,20 +127,8 @@
 					<br>консультации. 
 					<br>Услуга бесплатна.
 				</p>
-				<div class="section-order__input">
-					<input type="text" name="name" placeholder="Ваше имя" required>
-				</div>
-				<div class="section-order__input">
-					<input type="email" name="mail" placeholder="Ваша почта" required>
-				</div>
-				<div class="section-order__input">
-					<button class="btn btn--green">ЗАКАЗАТЬ ЗВОНОК</button>
-				</div>
-				<div class="section-order__input">
-					<input type="checkbox" id="ok">
-					<label for="ok">Выражаю свое согласие<br> на обработку персональных<br> данных.</label>
-				</div>
-			</form>
+				<?php echo do_shortcode( '[contact-form-7 id="282" title="ЗАКАЗАТЬ ЗВОНОК (Контакты)"]' ); ?>
+			</div>
 			
 		</div>
 	</section>

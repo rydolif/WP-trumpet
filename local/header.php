@@ -19,7 +19,7 @@
 
 <body>
 
-	<a href="#" class="fixed">
+	<a href="#" class="fixed call_open">
 		<img class="lazy" src="data:image/gif;base64,R0lGODlhBwACAIAAAP///wAAACH5BAEAAAEALAAAAAAHAAIAAAIDjI9YADs=" data-src="<?php echo get_template_directory_uri(); ?>/assets/img/fixed.png" data-srcset="<?php echo get_template_directory_uri(); ?>/assets/img/fixed.png 1x" alt="alt">
 	</a>
 

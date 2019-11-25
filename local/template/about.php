@@ -120,7 +120,7 @@
 			</div>
 			
 			<div class="about--catalog__btn">
-				<a href="#" class="btn btn--text">перейти в каталог</a>
+				<a href="<?php echo get_home_url(); ?>/produkciya/" class="btn btn--text">перейти в каталог</a>
 			</div>
 			
 		</div>

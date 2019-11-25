@@ -190,7 +190,7 @@
 						<br>производит трубы в ППУ изоляции такого диаметра
 						<br> серийно!
 					</p>
-					<a href="#" class="btn btn--green">О КОМПАНИИ</a>
+					<a href="<?php echo get_home_url(); ?>/o-nas/" class="btn btn--green">О КОМПАНИИ</a>
 				</div>
 			</div>
 
@@ -200,7 +200,7 @@
 	<section class="section-order" data-bg="<?php echo get_template_directory_uri(); ?>/assets/img/tabs--bg.jpg">
 		<div class="container">
 			
-			<form class="section-order__form form" data-bg="<?php echo get_template_directory_uri(); ?>/assets/img/section--order.jpg">
+			<div class="section-order__form" data-bg="<?php echo get_template_directory_uri(); ?>/assets/img/section--order.jpg">
 				<div class="section-order__block">
 					<h3>Заказ обратного звонка</h3>
 					<p>
@@ -208,21 +208,9 @@
 					</p>
 				</div>
 				<div class="section-order__block">
-					<div class="section-order__input">
-						<input type="text" name="name" placeholder="Ваше имя" required>
-					</div>
-					<div class="section-order__input">
-						<input type="email" name="mail" placeholder="Ваша почта" required>
-					</div>
-					<div class="section-order__input">
-						<button class="btn btn--accent">ЗАКАЗАТЬ ЗВОНОК</button>
-					</div>
-					<div class="section-order__input">
-						<input type="checkbox" id="ok">
-						<label for="ok">Выражаю свое согласие<br> на обработку персональных<br> данных.</label>
-					</div>
+					<?php echo do_shortcode( '[contact-form-7 id="283" title="Заказ обратного звонка (Главная)"]' ); ?>
 				</div>
-			</form>
+			</div>
 
 		</div>
 	</section>
