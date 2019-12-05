@@ -18,7 +18,7 @@
 				class="lazy" 
 				data-src="<?php the_post_thumbnail_url(); ?>" 
 				data-srcset="<?php the_post_thumbnail_url(); ?> 1x" 
-				alt="alt">
+				alt="<?php the_title(); ?>">
 
 		</div>
 	</section>
@@ -151,7 +151,7 @@
 						<div class="container">
 							
 							<h2><?php echo $title; ?></h2>
-							<h3><?php echo $sub_title; ?></h3>
+							<?php echo $sub_title; ?>
 
 							<?php if( have_rows('list') ): ?>
 								<div class="page--denefits__list">
@@ -176,6 +176,40 @@
 								</div>
 							<?php endif; ?>
 
+						</div>
+					</section>
+		        <?php 
+
+		        // Список с иконками зеленый фон
+		        elseif( get_row_layout() == 'list-green-icon' ):
+		            $title = get_sub_field('title');
+		            $sub_title = get_sub_field('sub_title');
+		        	?>
+
+	        		<section class="page--green page--info">
+						<div class="container">
+
+							<h2><?php echo $title; ?></h2>
+							<?php echo $sub_title; ?>
+
+							<?php if( have_rows('list') ): ?>
+								<div class="page--info__list">
+								<?php while( have_rows('list') ): the_row(); 
+									$title = get_sub_field('title');
+									$img = get_sub_field('img');
+									?>
+
+									<div class="page--info__item page--info__item-no">
+										<div class="page--green__img page--denefits__img">
+											<img src="<?php echo $img; ?>" alt="">
+										</div>
+										<span></span>
+										<p><?php echo $title; ?></p>
+									</div>
+
+								<?php endwhile; ?>
+								</div>
+							<?php endif; ?>
 						</div>
 					</section>
 		        <?php  
@@ -266,7 +300,7 @@
 	<section class="page--info">
 		<div class="container">
 
-			<h3>СМОТРЕТЬ ОСТАЛЬНУЮ ПРОДУКЦИЮ ИЗОЛЯЦИЯ ТРУБ И ДЕТАЛЕЙ ДЛЯ ЖКХ</h3>
+			<p class="h3">СМОТРЕТЬ ОСТАЛЬНУЮ ПРОДУКЦИЮ ИЗОЛЯЦИЯ ТРУБ И ДЕТАЛЕЙ ДЛЯ ЖКХ</p>
 			
 			<?php if( have_rows('still', 'option') ): ?>
 				<div class="page--info__list">

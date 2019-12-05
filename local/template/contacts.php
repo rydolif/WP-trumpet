@@ -85,7 +85,7 @@
 	<section class="contacts--position certifications" data-bg="<?php echo get_template_directory_uri(); ?>/assets/img/certifications--bg.jpg">
 		<div class="container">
 			
-			<h2>Связь с руководством</h2>
+			<p class="h2">Связь с руководством</p>
 
 			<?php if( have_rows('guide') ): ?>
 				<div class="contacts--position__list">
@@ -120,7 +120,7 @@
 		<div class="container">
 
 			<div class="contacts--call__form form">
-				<h3>Заказ обратного звонка</h3>
+				<p class="h3">Заказ обратного звонка</p>
 				<p>
 					Если Вам неудобно звонить нам, оставьте
 					<br>заявку, и мы сами Вам перезвоним для

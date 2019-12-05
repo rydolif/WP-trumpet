@@ -53,9 +53,10 @@
 					<?php while( have_rows('tabs1', 'option') ): the_row(); 
 						$img = get_sub_field('img');
 						$text = get_sub_field('text');
+						$link = get_sub_field('link');
 					?>
 
-						<div class="tabs__item">
+						<a href="<?php echo $link; ?>" class="tabs__item">
 							<img class="lazy" 
 								src="data:image/gif;base64,R0lGODlhBwACAIAAAP///wAAACH5BAEAAAEALAAAAAAHAAIAAAIDjI9YADs=" 
 								data-src="<?php echo $img; ?>" 
@@ -63,7 +64,7 @@
 								alt="alt">
 							<span></span>
 							<p><?php echo $text; ?></p>
-						</div>
+						</a>
 
 					<?php endwhile; ?>
 				</div>
@@ -74,9 +75,10 @@
 					<?php while( have_rows('tabs2', 'option') ): the_row(); 
 						$img = get_sub_field('img');
 						$text = get_sub_field('text');
+						$link = get_sub_field('link');
 					?>
 
-						<div class="tabs__item">
+						<a href="<?php echo $link; ?>" class="tabs__item">
 							<img class="lazy" 
 								src="data:image/gif;base64,R0lGODlhBwACAIAAAP///wAAACH5BAEAAAEALAAAAAAHAAIAAAIDjI9YADs=" 
 								data-src="<?php echo $img; ?>" 
@@ -84,7 +86,7 @@
 								alt="alt">
 							<span></span>
 							<p><?php echo $text; ?></p>
-						</div>
+						</a>
 
 					<?php endwhile; ?>
 				</div>
@@ -95,9 +97,10 @@
 					<?php while( have_rows('tabs3', 'option') ): the_row(); 
 						$img = get_sub_field('img');
 						$text = get_sub_field('text');
+						$link = get_sub_field('link');
 					?>
 
-						<div class="tabs__item">
+						<a href="<?php echo $link; ?>" class="tabs__item">
 							<img class="lazy" 
 								src="data:image/gif;base64,R0lGODlhBwACAIAAAP///wAAACH5BAEAAAEALAAAAAAHAAIAAAIDjI9YADs=" 
 								data-src="<?php echo $img; ?>" 
@@ -105,7 +108,7 @@
 								alt="alt">
 							<span></span>
 							<p><?php echo $text; ?></p>
-						</div>
+						</a>
 
 					<?php endwhile; ?>
 				</div>
@@ -190,7 +193,7 @@
 						<br>производит трубы в ППУ изоляции такого диаметра
 						<br> серийно!
 					</p>
-					<a href="<?php echo get_home_url(); ?>/o-nas/" class="btn btn--green">О КОМПАНИИ</a>
+					<a href="<?php echo get_home_url(); ?>/o-kompanii/" class="btn btn--green">О КОМПАНИИ</a>
 				</div>
 			</div>
 

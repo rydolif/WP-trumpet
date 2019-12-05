@@ -36,10 +36,10 @@
 	<section class="about--content">
 		<div class="container">
 			
-			<h3>
+			<p class="h3">
 				Завод оснащен современным высокотехнологичным оборудованием, обеспечивающим 
 				<br>выпуск 150 км трубопроводов в год для различных областей применения:
-			</h3>
+			</p>
 
 			<div class="about--content__list">
 				
@@ -129,7 +129,7 @@
 	<section class="about--supply certifications" data-bg="<?php echo get_template_directory_uri(); ?>/assets/img/certifications--bg.jpg">
 		<div class="container">
 			
-			<h3>Поставка осуществляется как отдельными элементами трубопроводов, так и полнокомплектная:</h3>
+			<p class="h3">Поставка осуществляется как отдельными элементами трубопроводов, так и полнокомплектная:</p>
 
 			<div class="about--supply__list">
 				

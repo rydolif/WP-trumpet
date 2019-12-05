@@ -573,7 +573,7 @@
 		color: $white
 		background-position: center
 
-		h3
+		h3, .h3
 			margin-bottom: 15px
 			
 		p
@@ -613,6 +613,7 @@
 			justify-content: space-between
 			flex-wrap: wrap
 			width: 48%
+			margin-bottom: 0 !important
 
 		&__input
 			width: 48%
@@ -620,6 +621,9 @@
 			&:nth-child(1),
 			&:nth-child(2)
 				margin-bottom: 20px
+
+			&:last-child
+				margin-bottom: 0 !important
 
 	&-catalog
 		&__img
@@ -637,7 +641,7 @@
 			.wpcf7-list-item-label::before
 				border-color: $accent
 
-		h3
+		h3, .h3
 			width: 100%
 			margin-bottom: 25px
 
@@ -925,6 +929,8 @@
 
 
 .contacts
+
+
 	&--hero
 		z-index: 1
 		padding:
@@ -1022,6 +1028,9 @@
 	&--position
 		text-align: left
 
+		.h2
+			color: #fff !important
+			
 		a
 			position: relative
 			color: $white
@@ -1075,10 +1084,10 @@
 			background-repeat: no-repeat
 			background-size: cover
 
-		p, h3
+		p, h3, .h3
 			width: 100%
 
-		h3
+		h3, .h3
 			margin-bottom: 40px
 
 		p
@@ -1145,7 +1154,7 @@
 			top: 80px
 			bottom: 40px
 
-		h3
+		h3, .h3
 			margin-bottom: 50px
 			text-align: center
 
@@ -1251,7 +1260,7 @@
 		padding-bottom: 30px
 		text-align: left
 
-		h3
+		h3, .h3
 			margin-bottom: 90px
 			text-align: center
 
@@ -1305,7 +1314,7 @@
 			z-index: -1
 
 		h1
-			margin-bottom: 80px
+			margin: 50px 0 80px
 
 		img
 			display: block
@@ -1336,7 +1345,7 @@
 		h2
 			margin-bottom: 20px
 
-		h3
+		h3, .h3
 			text-align: center
 			margin-bottom: 60px
 
@@ -1418,7 +1427,7 @@
 	&--info
 		background-color: $text
 
-		h3
+		h3, .h3
 			text-align: center
 			margin-bottom: 70px
 
@@ -1451,6 +1460,14 @@
 
 				img
 					transform: scale(.9)
+
+			&-no
+				&:hover,
+				&:focus
+					text-decoration: none
+					img
+						transform: translate(-50%, -50%) scale(1)
+						transform: 
 
 	&--green
 		background-color: $green
@@ -1637,7 +1654,7 @@
 	&__content
 		margin-bottom: 50px
 
-	h3
+	h3, .h3
 		color: $white
 
 		a
@@ -1648,10 +1665,22 @@
 				color: $white
 				text-decoration: underline
 				
-	p
+	p, ul
 		margin-bottom: 30px
 		font-size: 15px
 		font-weight: 700
+
+	ul
+		list-style-type: disc
+		padding-left: 25px
+
+	a
+		color: $accent
+
+		&:hover,
+		&:focus
+			text-decoration: underline
+			color: $accent
 
 
 .table
@@ -1693,7 +1722,7 @@
 	h2
 		margin-bottom: 20px
 
-	h3
+	h3, .h3
 		font-size: 26px
 		text-align: left
 		text-transform: none
@@ -1752,6 +1781,12 @@ iframe
 		&:focus
 			background-color: $border
 			box-shadow: 0 0 8px 0 rgba($green, 1)
+
+
+.h2
+	font-size: 44px !important
+	text-align: center
+	margin-bottom: 40px !important
 
 
 

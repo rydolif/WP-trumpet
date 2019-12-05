@@ -12,11 +12,8 @@
 
 				<div class="hero__title--sub-title hero__title--page hero__title">
 
-					<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-						<h1><?php the_title(); ?></h1>
-						<p><?php the_content(); ?></p>
-					<?php endwhile; ?>
-					<?php endif; ?>
+					<h1>ПРОДУКЦИЯ</h1>
+					<p>Трубы и фасонные изделия в ППУ изоляции</p>
 
 				</div>
 

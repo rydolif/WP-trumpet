@@ -187,8 +187,8 @@
     $after = '</span>'; // тег после текущей "крошки"
     $show_on_home = 0; // 1 - показывать "хлебные крошки" на главной странице, 0 - не показывать
     $show_home_link = 1; // 1 - показывать ссылку "Главная", 0 - не показывать
-    $show_current = 1; // 1 - показывать название текущей страницы, 0 - не показывать
-    $show_last_sep = 1; // 1 - показывать последний разделитель, когда название текущей страницы не отображается, 0 - не показывать
+    $show_current = 0; // 1 - показывать название текущей страницы, 0 - не показывать
+    $show_last_sep = 0; // 1 - показывать последний разделитель, когда название текущей страницы не отображается, 0 - не показывать
     /* === КОНЕЦ ОПЦИЙ === */
     global $post;
     $home_url = home_url('/');
@@ -431,3 +431,89 @@
             echo $args['before_output'] . $echo . $args['after_output'];
     }
 
+
+//------------------svg----------------------
+  add_filter( 'upload_mimes', 'upload_allow_types' );
+  function upload_allow_types( $mimes ) {
+    // разрешаем новые типы
+    $mimes['svg']  = 'text/plain'; // image/svg+xml
+    $mimes['doc']  = 'application/msword'; 
+    $mimes['woff'] = 'font/woff';
+    $mimes['psd']  = 'image/vnd.adobe.photoshop'; 
+    $mimes['djv']  = 'image/vnd.djvu';
+    $mimes['djvu'] = 'image/vnd.djvu';
+
+    // отключаем имеющиеся
+    unset( $mimes['mp4a'] );
+
+    return $mimes;
+  }
+
+
+  function fix_missing_404_on_paginated_page() {
+    global $wp_query,$page,$paged;
+ 
+    if (!isset($page)) $page = get_query_var('page');
+    if (!isset($paged)) $paged = get_query_var('paged');
+    if (is_page() || is_single()) {
+        $realpagescount = count( explode( '<!--nextpage-->', $wp_query->post->post_content ) );
+ 
+        if ( (isset($page) && isset($realpagescount) && $page >= $realpagescount) || (is_paged() && isset($paged) && $paged >=0 ) ){
+        //wp_redirect( home_url() );
+            nocache_headers();
+            status_header( '404' );
+            $wp_query->is_404=true;
+            $wp_query->is_single=false;
+            $wp_query->is_singular=false;
+            $wp_query->post_count=0;
+            $wp_query->page=0;
+            $wp_query->query['page']='';
+            $wp_query->query['posts']=array();
+            $wp_query->query['post']=array();
+            $wp_query->posts=array();
+            $wp_query->post=array();
+            $wp_query->queried_object=array();
+            $wp_query->queried_object_id=0;
+            locate_template('404.php', true);
+            exit;
+        }
+    }
+}
+add_action('template_redirect', 'fix_missing_404_on_paginated_page');
+
+
+
+
+add_filter( 'wpseo_canonical', 'yoast_seo_canonical_slash_add' );
+function yoast_seo_canonical_slash_add( $canonical_url ) {
+         return trailingslashit( $canonical_url );
+}
+
+
+// Прячем страницу страницу архива автора?
+if( ! is_admin() ){
+  add_action( 'pre_handle_404', 'remove_author_pages_page' );
+  add_filter( 'author_link', 'remove_author_pages_link' );
+
+  // Ставим 404 статус
+  function remove_author_pages_page( $false ) {
+    if ( is_author() ) {
+      global $wp_query;
+      $wp_query->set_404();
+      status_header( 404 );
+      nocache_headers();
+
+      return true; // для обрыва хука
+    }
+
+    return $false;
+  }
+
+  // удаляем ссылку
+  function remove_author_pages_link( $content ) {
+    return home_url();
+  }
+}
+
+
+add_filter("wpseo_robots", function() { return "index, follow"; });
