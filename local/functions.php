@@ -169,7 +169,6 @@
     add_action( 'init', 'produkciya_post_type', 0 );
 
 //------------------ "Хлебные крошки" для WordPress----------------------
-
   function dimox_breadcrumbs() {
     /* === ОПЦИИ === */
     $text['home'] = 'Главная'; // текст ссылки "Главная"
@@ -178,13 +177,13 @@
     $text['tag'] = 'Записи с тегом "%s"'; // текст для страницы тега
     $text['author'] = 'Статьи автора %s'; // текст для страницы автора
     $text['404'] = 'Ошибка 404'; // текст для страницы 404
-    $text['page'] = 'Страница %s'; // текст 'Страница N'
+    // $text['page'] = 'Страница %s'; // текст 'Страница N'
     $text['cpage'] = 'Страница комментариев %s'; // текст 'Страница комментариев N'
     $wrap_before = '<div class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">'; // открывающий тег обертки
     $wrap_after = '</div><!-- .breadcrumbs -->'; // закрывающий тег обертки
     $sep = '<span class="breadcrumbs__separator"> › </span>'; // разделитель между "крошками"
-    $before = '<span class="breadcrumbs__current">'; // тег перед текущей "крошкой"
-    $after = '</span>'; // тег после текущей "крошки"
+    // $before = '<span class="breadcrumbs__current">'; // тег перед текущей "крошкой"
+    // $after = '</span>'; // тег после текущей "крошки"
     $show_on_home = 0; // 1 - показывать "хлебные крошки" на главной странице, 0 - не показывать
     $show_home_link = 1; // 1 - показывать ссылку "Главная", 0 - не показывать
     $show_current = 0; // 1 - показывать название текущей страницы, 0 - не показывать
@@ -279,7 +278,7 @@
           $position += 1;
           if ( $position > 1 ) echo $sep;
           echo sprintf( $link, get_post_type_archive_link( $post_type->name ), $post_type->label, $position );
-          echo $sep . $before . sprintf( $text['page'], get_query_var( 'paged' ) ) . $after;
+          echo $asds . $before . sprintf( $text['page'], get_query_var( 'paged' ) ) . $after;
         } else {
           if ( $show_home_link && $show_current ) echo $sep;
           if ( $show_current ) echo $before . $post_type->label . $after;
@@ -517,3 +516,23 @@ if( ! is_admin() ){
 
 
 add_filter("wpseo_robots", function() { return "index, follow"; });
+
+remove_action('template_redirect', 'redirect_canonical'); 
+
+// // Удалить каноническую ссылку - SEO by Yoast
+// function at_remove_dup_canonical_link() {
+// return false;
+// }
+// add_filter( 'wpseo_canonical', 'at_remove_dup_canonical_link' );
+
+function return_canon () {
+$canon_page = get_pagenum_link(1);
+return $canon_page;
+}
+
+function canon_paged() {
+if (is_paged()) {
+add_filter( 'wpseo_canonical', 'return_canon' );
+}
+}
+add_filter('wpseo_head','canon_paged');
