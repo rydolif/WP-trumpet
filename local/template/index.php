@@ -43,14 +43,14 @@
 		<div class="container">
 
 			<ul>
-				<li><a href="#one" class="tabs__link"><?php the_field('tabs1-name', 'option'); ?></a></li>
-				<li><a href="#two" class="tabs__link"><?php the_field('tabs2-name', 'option'); ?></a></li>
-				<li><a href="#three" class="tabs__link"><?php the_field('tabs3-name', 'option'); ?></a></li>
+				<li><a href="#one" class="tabs__link"><?php the_field('tabs1-name'); ?></a></li>
+				<li><a href="#two" class="tabs__link"><?php the_field('tabs2-name'); ?></a></li>
+				<li><a href="#three" class="tabs__link"><?php the_field('tabs3-name'); ?></a></li>
 			</ul>
 
-			<?php if( have_rows('tabs1', 'option') ): ?>
+			<?php if( have_rows('tabs1') ): ?>
 				<div id="one" class="tabs__wrap">
-					<?php while( have_rows('tabs1', 'option') ): the_row(); 
+					<?php while( have_rows('tabs1') ): the_row(); 
 						$img = get_sub_field('img');
 						$text = get_sub_field('text');
 						$link = get_sub_field('link');
@@ -70,9 +70,9 @@
 				</div>
 			<?php endif; ?>
 
-			<?php if( have_rows('tabs2', 'option') ): ?>
+			<?php if( have_rows('tabs2') ): ?>
 				<div id="two" class="tabs__wrap">
-					<?php while( have_rows('tabs2', 'option') ): the_row(); 
+					<?php while( have_rows('tabs2') ): the_row(); 
 						$img = get_sub_field('img');
 						$text = get_sub_field('text');
 						$link = get_sub_field('link');
@@ -92,9 +92,9 @@
 				</div>
 			<?php endif; ?>
 
-			<?php if( have_rows('tabs3', 'option') ): ?>
+			<?php if( have_rows('tabs3') ): ?>
 				<div id="three" class="tabs__wrap">
-					<?php while( have_rows('tabs3', 'option') ): the_row(); 
+					<?php while( have_rows('tabs3') ): the_row(); 
 						$img = get_sub_field('img');
 						$text = get_sub_field('text');
 						$link = get_sub_field('link');
@@ -205,7 +205,7 @@
 			
 			<div class="section-order__form" data-bg="<?php echo get_template_directory_uri(); ?>/assets/img/section--order.jpg">
 				<div class="section-order__block">
-					<h3>Заказ обратного звонка</h3>
+					<p class="h3">Заказ обратного звонка</p>
 					<p>
 						Если Вам неудобно звонить нам, оставьте<br> заявку, и мы сами Вам перезвоним для<br> консультации. Услуга бесплатна.
 					</p>
